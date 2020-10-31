@@ -38,6 +38,20 @@ function showPosition(position) {
   }
   findPosition();
 
+function calculateImperial(event) {
+  event.preventDefault();
+  let citySearched = document.querySelector("#city-input");
+  axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=imperial`).then(showTemperature);
+}
+
+function calculateCelsius(event) {
+  event.preventDefault();
+  let citySearched = document.querySelector("#city-input");
+  axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=metric`).then(showTemperature);  
+
+}
+
+
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = response.data.name;
@@ -62,6 +76,12 @@ searchNewCity.addEventListener("click", changeCity);
 
 let getCurrentCity = document.querySelector("#currentCityButton");
 getCurrentCity.addEventListener("click", findPosition);
+
+let changeToFahrenheit = document.querySelector("#fahrenheit");
+changeToFahrenheit.addEventListener("click", calculateImperial);
+
+let changeToCelsius = document.querySelector("#celsius");
+changeToCelsius.addEventListener("click", calculateCelsius);
 
 
 
