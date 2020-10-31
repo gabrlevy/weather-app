@@ -36,6 +36,7 @@ function showPosition(position) {
   let lon = position.coords.longitude;
   axios.get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`).then(showTemperature);  
   }
+  findPosition();
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
