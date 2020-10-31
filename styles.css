@@ -1,6 +1,7 @@
 .container {
 
     max-width: 300px;
+    margin-bottom: 2px;
 }
 
 h1 {
@@ -15,6 +16,18 @@ h3 {
 h4 {
     color: #192072;
 }
+
+p {
+    font-size: small;
+    display: block;
+}
+
+.wrapper {
+    margin: 0 auto;
+    height: 1400px;
+    width: 650px;
+  }
+  
 .unit {
     font-size: smaller; 
 }
