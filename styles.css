@@ -1,0 +1,43 @@
+.container {
+
+    max-width: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: #192072;
+}
+
+h3 {
+    display: inline;
+}
+
+h4 {
+    color: #192072;
+}
+span {
+    font-size: smaller; 
+}
+
+.temp {
+    text-align: right;
+    font-size: smaller;
+    color: #3f4368;
+
+}
+input {
+    display: inline;
+}
+button {
+    display: inline;
+}
+.emoji {
+    font-size: x-large;
+}
+#condition {
+    font-size: larger;
+}
+
+.temperature {
+    font-size: xx-large;
+}
