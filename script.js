@@ -1,21 +1,31 @@
-let timeNow = new Date();
+function formatDate(timestamp) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+ 
+  let timeNow = new Date(timestamp);
 
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
+  let currentDay = days[timeNow.getDay()];
+  let hours = timeNow.getHours();
+  let minutes = timeNow.getMinutes();
 
-let currentDay = days[timeNow.getDay()];
-let hours = timeNow.getHours();
-let minutes = timeNow.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+return `${currentDay} ${hours}:${minutes}`;
+}
 
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${currentDay}, ${hours}:${minutes}`;
+
+
 
 let apiKey = "3ba861b54cd5df7a279d3463ebc72481";
 
@@ -58,15 +68,17 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let pressure = response.data.main.pressure;
+
   humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   windHtml.innerHTML = `Wind Speed: ${wind}Km/h`;
   conditionHtml.innerHTML = `${weatherCondition}`;
   temperatureElement.innerHTML = `${temperature}`;
   currentCity.innerHTML = `${cityName}`;
   pressureHtml.innerHTML = `Pressure: ${pressure}mb`;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
-
+let dateElement = document.querySelector("#current-time")
 let temperatureElement = document.querySelector("#temperature");
 let humidityHtml = document.querySelector("#humidity");
 let windHtml = document.querySelector("#wind");

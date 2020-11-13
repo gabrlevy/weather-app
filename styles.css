@@ -40,6 +40,9 @@ li {
     font-weight: 100;
     line-height: 19.2px;
     text-align: left;
+    
+}
+li:first-letter {
     text-transform: capitalize;
 }
 
