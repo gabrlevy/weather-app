@@ -1,12 +1,40 @@
-.container {
+body {
+    font-family: arial, sans-serif;
+}
+.wrapper {
 
-    max-width: 300px;
+    margin: 0 auto;
+    width: 650px;
+    height: 450px;
     margin-bottom: 2px;
+}
+
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    list-style: none;
+    color: rgb(134, 135, 135);
+    display: block;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19.2px;
+    text-align: left;
+    text-transform: capitalize;
 }
 
 h1 {
     text-align: center;
-    color: #192072;
+    color: rgb(135, 135, 135);
+    display: block;
+    font-family: arial, sans-serif;
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 0px;
+
 }
 
 h3 {
@@ -21,21 +49,28 @@ p {
     font-size: small;
     display: block;
 }
-
-.wrapper {
-    margin: 0 auto;
-    height: 1400px;
-    width: 650px;
-  }
   
 .unit {
     font-size: smaller; 
 }
 
-.temp {
-    text-align: right;
-    font-size: smaller;
-    color: #3f4368;
+.temperature {
+    color: rgb(32, 33, 36);
+    display: inline;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 64px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    height: auto;
+    line-height: normal;
+    text-align: left;
+    user-select: none;
+    width: auto;
 
 }
 input {
@@ -47,10 +82,9 @@ button {
 .emoji {
     font-size: x-large;
 }
-#condition {
-    font-size: larger;
-}
+
 
 .temperature {
     font-size: xx-large;
 }
+

@@ -14,7 +14,7 @@ let currentDay = days[timeNow.getDay()];
 let hours = timeNow.getHours();
 let minutes = timeNow.getMinutes();
 
-let currentTime = document.querySelector("h5");
+let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${currentDay}, ${hours}:${minutes}`;
 
 let apiKey = "3ba861b54cd5df7a279d3463ebc72481";
@@ -25,6 +25,7 @@ function changeCity(event) {
   event.preventDefault();
   let citySearched = document.querySelector("#city-input");
   axios.get(`${apiUrl}q=${citySearched.value}&units=metric&appid=${apiKey}`).then(showTemperature);  
+  console.log(axios.get(`${apiUrl}q=${citySearched.value}&units=metric&appid=${apiKey}`));
 }
 
 function findPosition() {
@@ -48,7 +49,6 @@ function calculateCelsius(event) {
   event.preventDefault();
   let citySearched = document.querySelector("#city-input");
   axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=metric`).then(showTemperature);  
-
 }
 
 
@@ -58,18 +58,22 @@ function showTemperature(response) {
   let weatherCondition = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
+  let pressure = response.data.main.pressure;
   humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   windHtml.innerHTML = `Wind Speed: ${wind}Km/h`;
   conditionHtml.innerHTML = `${weatherCondition}`;
   temperatureElement.innerHTML = `${temperature}`;
   currentCity.innerHTML = `${cityName}`;
+  pressureHtml.innerHTML = `Pressure: ${pressure}mb`
 }
+
 
 let temperatureElement = document.querySelector("#temperature");
 let humidityHtml = document.querySelector("#humidity");
 let windHtml = document.querySelector("#wind");
 let conditionHtml = document.querySelector("#condition");
 let currentCity = document.querySelector("#currentCity");
+let pressureHtml = document.querySelector("#pressure");
 
 let searchNewCity = document.querySelector("#searchButton");
 searchNewCity.addEventListener("click", changeCity);

@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 
 </head>
 <body>
   
 
   <br>
-  <div class="wrapper">
-  <div class="container border rounded p-5 mb-0">
+  <div class="wrapper" id="weather-app">
+  <div class="container border rounded p-3 mb-0">
     <div class="row">
       <div class="col-6">
         <input type="search" id="city-input" placeholder="Type a city..." autofocus="on" autocomplete="off" class="form-control shadow-sm"></input>
@@ -28,28 +28,35 @@
     </div>
     <br><br>
     <div class="row">
-      <h4 class="col-6" id="currentCity"></h4> <br>
+      <h1 class="col-6" id="currentCity"></h1> <br>
     </div>
-    <h5 class="currentTime"></h5>
-    <div><p> <span id="condition"></span></p></div>
     <div class="row">
       <div class="float-left col-3">
+    <ul>
+      <li id="current-time">hi</li>
+      <li id="condition"></li>
+    </ul>
+  </div>
+  </div>
+    <div class="row">
+      <div class="float-left col-5">
         <span class="temperature" id="temperature"></span>
         <span class="unit">
           <span id="celsius"><a href="#">°C</a></span> | 
           <span id="fahrenheit"><a href="#">°F</a></span>
       </span>
       </div>
-      <div class="float-right col-4">
-        <span class="humidity" id="humidity"></span>
-        <br>
-        <span class="wind" id="wind"></span>
+      <div class="float-right col-5">
+        <ul>
+          <li id="pressure"></li>
+          <li id="humidity"></li>
+          <li id="wind"></li>
+          
+        </ul>
       </div>
-      
     </div>
-
   </div>
-  <div class="link-signature"></div><p><a href="https://github.com/gabrlevy/weather-app" target="_blankrecipes"> open-source coded</a> by Gabriela Levy</p>
+  <span class="link-signature"><p><a href="https://github.com/gabrlevy/weather-app" target="_blankrecipes"> open-source coded</a> by Gabriela Levy</p></span>
 </div>
  <script src="./script.js"></script>
 
