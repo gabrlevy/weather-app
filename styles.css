@@ -1,28 +1,6 @@
 body {
     font-family: arial, sans-serif;
 }
-.wrapper {
-
-    margin: 0 auto;
-    width: 650px;
-    height: 450px;
-    margin-bottom: 2px;
-}
-
-ul{
-    margin: 0px;
-    padding: 0px;
-}
-li {
-    list-style: none;
-    color: rgb(134, 135, 135);
-    display: block;
-    font-size: 16px;
-    font-weight: 100;
-    line-height: 19.2px;
-    text-align: left;
-    text-transform: capitalize;
-}
 
 h1 {
     text-align: center;
@@ -49,9 +27,34 @@ p {
     font-size: small;
     display: block;
 }
-  
-.unit {
-    font-size: smaller; 
+
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    list-style: none;
+    color: rgb(134, 135, 135);
+    display: block;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19.2px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 650px;
+    height: 450px;
+    margin-bottom: 2px;
+}
+
+
+.units {
+    position: relative;
+    font-size: 16px;
+    top: -32px; 
 }
 
 .temperature {
@@ -83,8 +86,16 @@ button {
     font-size: x-large;
 }
 
-
-.temperature {
-    font-size: xx-large;
+.overview {
+    margin-bottom: 20px;
 }
+.temperature {
+    display: inline;
+    font-size: 64px;
+    line-height: 1;
+    color: #202124;
+}
+img {
+    padding-right: 10px;
 
+}

@@ -51,7 +51,6 @@ function calculateCelsius(event) {
   axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=metric`).then(showTemperature);  
 }
 
-
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = response.data.name;
@@ -59,15 +58,17 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let pressure = response.data.main.pressure;
+  let icon = response.data.weather[0].icon;
   humidityHtml.innerHTML = `Humidity: ${humidity}%`;
   windHtml.innerHTML = `Wind Speed: ${wind}Km/h`;
   conditionHtml.innerHTML = `${weatherCondition}`;
   temperatureElement.innerHTML = `${temperature}`;
   currentCity.innerHTML = `${cityName}`;
-  pressureHtml.innerHTML = `Pressure: ${pressure}mb`
+  pressureHtml.innerHTML = `Pressure: ${pressure}mb`;
+  iconImage.innerHTML = `${icon}`;
 }
 
-
+let iconImage = document.querySelector("#image")
 let temperatureElement = document.querySelector("#temperature");
 let humidityHtml = document.querySelector("#humidity");
 let windHtml = document.querySelector("#wind");
