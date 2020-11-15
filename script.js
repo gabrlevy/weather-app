@@ -86,8 +86,13 @@ let currentCity = document.querySelector("#currentCity");
 let pressureHtml = document.querySelector("#pressure");
 let iconElement = document.querySelector("#icon");
 
+
+
 let searchNewCity = document.querySelector("#searchButton");
 searchNewCity.addEventListener("click", changeCity);
+
+let submitForm = document.querySelector("#search-form");
+submitForm.addEventListener("submit", changeCity);
 
 let getCurrentCity = document.querySelector("#currentCityButton");
 getCurrentCity.addEventListener("click", findPosition);
