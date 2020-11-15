@@ -104,3 +104,11 @@ img {
     max-width: 64px;
 
 }
+
+.weather-temperature .active {
+    color: rgb(32, 33, 36);
+    cursor: default;
+}
+.weather-temperature .active:hover{
+    text-decoration: none;
+}

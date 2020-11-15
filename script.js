@@ -47,14 +47,17 @@ function showPosition(position) {
 
 function calculateImperial(event) {
   event.preventDefault();
-  let citySearched = document.querySelector("#city-input");
-  axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=imperial`).then(showTemperature);
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 function calculateCelsius(event) {
   event.preventDefault();
-  let citySearched = document.querySelector("#city-input");
-  axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=metric`).then(showTemperature);  
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  celsiusLink.classList.add("active")
+  fahrenheitLink.classList.remove("active");
 }
 
 function showTemperature(response) {
@@ -64,6 +67,8 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let wind = Math.round(response.data.wind.speed);
   let pressure = response.data.main.pressure;
+
+  celsiusTemperature = Math.round(response.data.main.temp);
 
   humidityHtml.innerHTML = humidity;
   windHtml.innerHTML = `${wind}km/h`;
@@ -86,7 +91,7 @@ let currentCity = document.querySelector("#currentCity");
 let pressureHtml = document.querySelector("#pressure");
 let iconElement = document.querySelector("#icon");
 
-
+let celsiusTemperature = null;
 
 let searchNewCity = document.querySelector("#searchButton");
 searchNewCity.addEventListener("click", changeCity);
@@ -97,11 +102,11 @@ submitForm.addEventListener("submit", changeCity);
 let getCurrentCity = document.querySelector("#currentCityButton");
 getCurrentCity.addEventListener("click", findPosition);
 
-let changeToFahrenheit = document.querySelector("#fahrenheit");
-changeToFahrenheit.addEventListener("click", calculateImperial);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", calculateImperial);
 
-let changeToCelsius = document.querySelector("#celsius");
-changeToCelsius.addEventListener("click", calculateCelsius);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", calculateCelsius);
 
 
 
