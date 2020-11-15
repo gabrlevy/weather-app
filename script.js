@@ -24,9 +24,6 @@ function formatDate(timestamp) {
 return `${currentDay} ${hours}:${minutes}`;
 }
 
-
-
-
 let apiKey = "3ba861b54cd5df7a279d3463ebc72481";
 
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
@@ -35,7 +32,6 @@ function changeCity(event) {
   event.preventDefault();
   let citySearched = document.querySelector("#city-input");
   axios.get(`${apiUrl}q=${citySearched.value}&units=metric&appid=${apiKey}`).then(showTemperature);  
-  
 }
 
 function findPosition() {
@@ -52,7 +48,7 @@ function showPosition(position) {
 function calculateImperial(event) {
   event.preventDefault();
   let citySearched = document.querySelector("#city-input");
-  axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=imperial`).then(showTemperature);
+  axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=imperial`).then(showTemperatureImperial);
 }
 
 function calculateCelsius(event) {
@@ -66,15 +62,34 @@ function showTemperature(response) {
   let cityName = response.data.name;
   let weatherCondition = response.data.weather[0].description;
   let humidity = response.data.main.humidity;
+  let wind = Math.round(response.data.wind.speed);
+  let pressure = response.data.main.pressure;
+
+  humidityHtml.innerHTML = humidity;
+  windHtml.innerHTML = `${wind}km/h`;
+  conditionHtml.innerHTML = weatherCondition;
+  temperatureElement.innerHTML = temperature;
+  currentCity.innerHTML = cityName;
+  pressureHtml.innerHTML =  pressure;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description)
+}
+
+function showTemperatureImperial(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let cityName = response.data.name;
+  let weatherCondition = response.data.weather[0].description;
+  let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   let pressure = response.data.main.pressure;
 
-  humidityHtml.innerHTML = `Humidity: ${humidity}%`;
-  windHtml.innerHTML = `Wind Speed: ${wind}Km/h`;
-  conditionHtml.innerHTML = `${weatherCondition}`;
-  temperatureElement.innerHTML = `${temperature}`;
-  currentCity.innerHTML = `${cityName}`;
-  pressureHtml.innerHTML = `Pressure: ${pressure}mb`;
+  humidityHtml.innerHTML = humidity;
+  windHtml.innerHTML = `${wind}mph`;
+  conditionHtml.innerHTML = weatherCondition;
+  temperatureElement.innerHTML = temperature;
+  currentCity.innerHTML = cityName;
+  pressureHtml.innerHTML =  pressure;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
@@ -85,6 +100,7 @@ let windHtml = document.querySelector("#wind");
 let conditionHtml = document.querySelector("#condition");
 let currentCity = document.querySelector("#currentCity");
 let pressureHtml = document.querySelector("#pressure");
+let iconElement = document.querySelector("#icon");
 
 let searchNewCity = document.querySelector("#searchButton");
 searchNewCity.addEventListener("click", changeCity);

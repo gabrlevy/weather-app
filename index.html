@@ -35,7 +35,7 @@
     <div class="row">
       <div class="float-left col-6">
     <ul class="overview">
-      <li>Updated at <span id="current-time"></span></li>
+      <li>Updated on <span id="current-time"></span></li>
       <li id="condition"></li>
     </ul>
   </div>
@@ -44,7 +44,7 @@
       <div class="col-7">
         <div class="clearfix">
 
-          <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear" class="float-left"/>
+          <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear" class="float-left" id="icon"/>
           <div class="float-left">
             <span class="temperature" id="temperature"></span>
             <span class="units">
@@ -56,9 +56,9 @@
       </div>
       <div class="float-right col-5">
         <ul>
-          <li id="pressure"></li>
-          <li id="humidity"></li>
-          <li id="wind"></li>
+          <li>Pressure: <span id="pressure"></span>mb</li>
+          <li>Humidity: <span id="humidity"></span>%</li>
+          <li>Wind: <span id="wind"></span></li>
           
         </ul>
       </div>
