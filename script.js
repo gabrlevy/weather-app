@@ -89,7 +89,7 @@ let iconElement = document.querySelector("#icon");
 function search(city) {
   let apiKey = "3ba861b54cd5df7a279d3463ebc72481";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
-  axios.get(`${apiUrl}q=${citySearched.value}&units=metric&appid=${apiKey}`).then(showTemperature);  
+  axios.get(`${apiUrl}q=${city.value}&units=metric&appid=${apiKey}`).then(showTemperature);  
 }
 
 function handleSubmit(event) {
@@ -100,6 +100,8 @@ function handleSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+
 //let searchNewCity = document.querySelector("#searchButton");
 //searchNewCity.addEventListener("click", changeCity);
 
