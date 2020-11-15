@@ -23,7 +23,7 @@ function formatDate(timestamp) {
   }
 return `${currentDay} ${hours}:${minutes}`;
 }
-/*
+
 let apiKey = "3ba861b54cd5df7a279d3463ebc72481";
 
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
@@ -31,10 +31,9 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
 function changeCity(event) {
   event.preventDefault();
   let citySearched = document.querySelector("#city-input");
-  
   axios.get(`${apiUrl}q=${citySearched.value}&units=metric&appid=${apiKey}`).then(showTemperature);  
 }
-*/
+
 function findPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
@@ -45,7 +44,7 @@ function showPosition(position) {
   axios.get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`).then(showTemperature);  
   }
   findPosition();
-/*
+
 function calculateImperial(event) {
   event.preventDefault();
   let citySearched = document.querySelector("#city-input");
@@ -57,7 +56,7 @@ function calculateCelsius(event) {
   let citySearched = document.querySelector("#city-input");
   axios.get(`${apiUrl}q=${citySearched.value}&appid=${apiKey}&units=metric`).then(showTemperature);  
 }
-*/
+
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let cityName = response.data.name;
@@ -77,6 +76,7 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description)
 }
 
+
 let dateElement = document.querySelector("#current-time")
 let temperatureElement = document.querySelector("#temperature");
 let humidityHtml = document.querySelector("#humidity");
@@ -86,33 +86,17 @@ let currentCity = document.querySelector("#currentCity");
 let pressureHtml = document.querySelector("#pressure");
 let iconElement = document.querySelector("#icon");
 
-function search(city) {
-  let apiKey = "3ba861b54cd5df7a279d3463ebc72481";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
-  axios.get(`${apiUrl}q=${city.value}&units=metric&appid=${apiKey}`).then(showTemperature);  
-}
+let searchNewCity = document.querySelector("#searchButton");
+searchNewCity.addEventListener("click", changeCity);
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let citySearched = document.querySelector("#city-input");
-  search(citySearched.value);
-}
+let getCurrentCity = document.querySelector("#currentCityButton");
+getCurrentCity.addEventListener("click", findPosition);
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
+let changeToFahrenheit = document.querySelector("#fahrenheit");
+changeToFahrenheit.addEventListener("click", calculateImperial);
 
-
-//let searchNewCity = document.querySelector("#searchButton");
-//searchNewCity.addEventListener("click", changeCity);
-
-//let getCurrentCity = document.querySelector("#currentCityButton");
-//getCurrentCity.addEventListener("click", findPosition);
-
-//let changeToFahrenheit = document.querySelector("#fahrenheit");
-//changeToFahrenheit.addEventListener("click", calculateImperial);
-
-//let changeToCelsius = document.querySelector("#celsius");
-//changeToCelsius.addEventListener("click", calculateCelsius);
+let changeToCelsius = document.querySelector("#celsius");
+changeToCelsius.addEventListener("click", calculateCelsius);
 
 
 
