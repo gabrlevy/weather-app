@@ -101,5 +101,6 @@ button {
 }
 img {
     padding-right: 10px;
+    max-width: 64px;
 
 }
