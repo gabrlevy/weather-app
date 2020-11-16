@@ -64,17 +64,17 @@ function showTemperature(response) {
 
 function showForecast(response) {
   let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
   let forecast = null;
   
   for (let index = 0; index < 6; index++){
     forecast = response.data.list[index];
-
-  forecastElement.innerHTML += `
-  <div class="col-2">
+    forecastElement.innerHTML += `
+  <div class="col-2 id="forecast-element">
   <h3 class="forecast-timestamp">${formatHours(forecast.dt * 1000)}</h3>
   <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="${forecast.weather[0].main}" class="float-left" id="icon"/>
-  <div class="weather-forecast-temperature">
-    <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(forecast.main.temp_min)}°
+  <div>
+    <strong>${Math.round(forecast.main.temp_max)}°</strong>
   </div>
   </div>`;
   }
@@ -132,6 +132,9 @@ function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   axios.get(`${apiUrl}lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`).then(showTemperature);  
+  
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
   }
   findPosition();
 
