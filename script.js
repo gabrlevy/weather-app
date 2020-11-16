@@ -122,7 +122,7 @@ function showPosition(position) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
   }
-  //findPosition();
+  findPosition();
 
 
   
