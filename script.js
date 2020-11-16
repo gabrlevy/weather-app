@@ -70,12 +70,10 @@ function showForecast(response) {
   for (let index = 0; index < 6; index++){
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
-  <div class="col-2 id="forecast-element">
-  <h3 class="forecast-timestamp">${formatHours(forecast.dt * 1000)}</h3>
-  <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="${forecast.weather[0].main}" class="float-left" id="icon"/>
-  <div>
+  <div class="col-2" id="forecast-element">
+    <h3 class="forecast-timestamp">${formatHours(forecast.dt * 1000)}</h3>
+    <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="${forecast.weather[0].main}" class="float-left" id="icon"/>
     <strong>${Math.round(forecast.main.temp_max)}°</strong>
-  </div>
   </div>`;
   }
 }

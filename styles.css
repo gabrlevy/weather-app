@@ -53,8 +53,6 @@ li:first-letter {
     margin-bottom: 2px;
 }
 
-
-
 .units {
     position: relative;
     font-size: 16px;
@@ -129,9 +127,11 @@ img {
     padding-top: 7px;
 }
 
-.weather-forecast img {
-    display: block;
-    margin: 0 auto;
+#forecast-element {
+    display: inline-block;
     height: 48px;
     width: 48px;
+    padding-right: 35px;
+    box-sizing: content-box;
+    text-align: right;
 }
