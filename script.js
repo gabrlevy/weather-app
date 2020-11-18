@@ -88,6 +88,8 @@ let currentCity = document.querySelector("#currentCity");
 let pressureHtml = document.querySelector("#pressure");
 let iconElement = document.querySelector("#icon");
 let celsiusTemperature = null;
+let jerusalem = "Jerusalem";
+let angerManagement = "lickinzedicken, Germany";
 
 let searchNewCity = document.querySelector("#searchButton");
 searchNewCity.addEventListener("click", changeCity);
@@ -137,7 +139,12 @@ function showPosition(position) {
     function changeCity(event) {
       event.preventDefault();
       let citySearched = document.querySelector("#city-input");
-      search(citySearched.value);
+      if (citySearched.value === angerManagement) {
+        currentCity.innerHTML = angerManagement;
+      } else if (citySearched.value === "capital of israel") {
+        search("jerusalem")
+      } else {
+      search(citySearched.value)};
     }
    
 
